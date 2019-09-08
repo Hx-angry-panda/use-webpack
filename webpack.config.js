@@ -1,6 +1,4 @@
 const path = require('path');
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
     entry: './src/js/app.js',
@@ -65,22 +63,4 @@ module.exports = {
             }
         ]
     },
-
-    //移动到独立分离的 CSS 文件
-    //要放在 postcss-loader 后，因为有执行先后
-    module: {
-        rules: [
-            {
-                test: /\.scss$/,
-                use: ExtractTextPlugin.extract({
-                    fallback: "style-loader",
-                    use: ['css-loader', 'sass-loader']
-                })
-            }
-        ]
-    },
-
-    plugins: [
-        new ExtractTextPlugin("./css/style.css"),
-    ],
 };
